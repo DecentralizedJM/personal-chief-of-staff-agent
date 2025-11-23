@@ -1,0 +1,4 @@
+{
+  "workflow": "intake",
+  "description": "Takes any text (email, transcript, message) and extracts tasks using Gemini."
+}
