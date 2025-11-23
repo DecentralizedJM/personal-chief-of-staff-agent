@@ -1,23 +1,40 @@
 import axios from "axios";
 
-export const extractTasks = async (text: string) => {
-  const response = await axios.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
-    {
-      contents: [{ parts: [{ text }] }],
-    },
-    {
-      params: { key: process.env.GEMINI_API_KEY },
-    }
-  );
+const GEMINI_URL =
+  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
 
-  return response.data;
+export const extractTasks = async (text: string) => {
+  try {
+    const payload = {
+      contents: [
+        {
+          parts: [{ text }],
+        },
+      ],
+    };
+
+    const response = await axios.post(GEMINI_URL, payload, {
+      params: { key: process.env.GEMINI_API_KEY },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    console.error("🔥 Gemini Error:", error.response?.data || error.message);
+    return {
+      error: true,
+      message: "Gemini request failed",
+      details: error.response?.data || error.message,
+    };
+  }
 };
 
 export const generateDailyBrief = async () => {
-  return `Daily brief generated via Gemini: ${new Date().toDateString()}`;
+  return { brief: "Daily brief generated using Gemini." };
 };
 
 export const generateWeeklyBrief = async () => {
-  return `Weekly brief generated via Gemini: Week ending ${new Date().toDateString()}`;
+  return { brief: "Weekly brief generated using Gemini." };
 };
