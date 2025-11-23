@@ -1,0 +1,4 @@
+{
+  "workflow": "reminders",
+  "description": "Handles daily/weekly reminders and Telegram notifications."
+}
