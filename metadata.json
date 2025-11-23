@@ -1,0 +1,5 @@
+{
+  "name": "Personal Chief-of-Staff Agent Dashboard",
+  "description": "A control center for your Personal Chief-of-Staff Agent. Includes system configuration, prompt management, n8n workflow generation, and a Gemini-powered simulation playground.",
+  "requestFramePermissions": []
+}
