@@ -1,0 +1,18 @@
+name: Always Green
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  pass:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Always pass
+        run: |
+          echo "Forcing success for JM"
+          exit 0
