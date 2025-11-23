@@ -1,0 +1,4 @@
+{
+  "workflow": "task_manager",
+  "description": "Parses JSON from Gemini and stores tasks in Notion."
+}
