@@ -1,8 +1,4 @@
-import { Request, Response } from "express";
+export async function getStatus(req, res) {
+  res.json({ ok: true });
+}
 
-export const getSystemStatus = async (req: Request, res: Response) => {
-  res.json({
-    status: "online",
-    timestamp: new Date().toISOString(),
-  });
-};

@@ -1,8 +1,12 @@
-import { Request, Response } from "express";
 import { extractTasks } from "../services/gemini";
 
-export const ingestContent = async (req: Request, res: Response) => {
-  const { text } = req.body;
-  const result = await extractTasks(text);
-  res.json(result);
-};
+export async function ingestContent(req, res) {
+  try {
+    const { text } = req.body;
+    const tasks = await extractTasks(text);
+    res.json({ tasks });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+

@@ -1,8 +1,6 @@
-import express from "express";
-import { getSystemStatus } from "../controllers/statusController";
+import { Router } from "express";
+import { getStatus } from "../controllers/statusController";
 
-const router = express.Router();
+export const statusRouter = Router();
 
-router.get("/", getSystemStatus);
-
-export default router;
+statusRouter.get("/", getStatus);

@@ -1,27 +1,16 @@
 import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { ingestContent } from "./services/ingestController";
-
-dotenv.config();
+import bodyParser from "body-parser";
+import { ingestRouter } from "./routes/ingestRoutes";
+import { briefRouter } from "./routes/briefRoutes";
+import { statusRouter } from "./routes/statusRoutes";
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
-// Health check
-app.get("/", (req, res) => {
-  res.json({
-    status: "OK",
-    message: "Personal Chief-of-Staff Agent running.",
-  });
-});
+app.use("/ingest", ingestRouter);
+app.use("/brief", briefRouter);
+app.use("/status", statusRouter);
 
-// MAIN INGEST ENDPOINT (this is what n8n calls)
-app.post("/ingest", ingestContent);
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Backend running on", port));
 
-// Port for Railway
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("🔥 Server running on port:", PORT);
-});

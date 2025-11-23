@@ -1,8 +1,7 @@
-import express from "express";
+import { Router } from "express";
 import { ingestContent } from "../controllers/ingestController";
 
-const router = express.Router();
+export const ingestRouter = Router();
 
-router.post("/", ingestContent);
+ingestRouter.post("/", ingestContent);
 
-export default router;

@@ -1,9 +1,8 @@
-import express from "express";
-import { getDailyBrief, getWeeklyBrief } from "../controllers/briefController";
+import { Router } from "express";
+import { getDaily, getWeekly } from "../controllers/briefController";
 
-const router = express.Router();
+export const briefRouter = Router();
 
-router.get("/daily", getDailyBrief);
-router.get("/weekly", getWeeklyBrief);
+briefRouter.get("/daily", getDaily);
+briefRouter.get("/weekly", getWeekly);
 
-export default router;
