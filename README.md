@@ -3,6 +3,11 @@
 A clean, reactive dashboard built to monitor, control, and visualize the **Personal Chief-of-Staff Agent** system.
 This UI works alongside the automation engine (n8n + Gemini + Notion + Telegram + Google Calendar), giving you a single place to track tasks, briefs, reminders, and system health.
 
+> **⚠️ BACKEND STATUS: DORMANT**  
+> The backend is **not currently deployed** to any hosting service (Railway, Vercel, etc.).  
+> It exists in the `/backend` folder for local development only.  
+> See the [Backend README](./backend/README.md) for local setup instructions.
+
 ---
 
 ## 🌐 AI Studio Version
@@ -87,7 +92,7 @@ Status indicators for all integrations.
 
 * Node.js 18+
 * Gemini API key
-* Backend endpoints from your Chief-of-Staff agent (n8n or custom API)
+* **Backend is currently dormant** - frontend runs standalone for simulation/testing
 
 ### **Run locally**
 
@@ -102,14 +107,28 @@ In `.env.local`:
 
 ```
 GEMINI_API_KEY=your_key_here
-VITE_BACKEND_URL=http://localhost:3000
+# VITE_BACKEND_URL is not needed - backend is dormant
 ```
+
+### **Optional: Run Backend Locally**
+
+The backend exists but is **not deployed**. To run it locally for testing:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+See [backend/README.md](./backend/README.md) for details.
 
 ---
 
 ## 🔧 Configuration
 
-Endpoints inside `/services` define how the dashboard communicates with your backend agent:
+The dashboard currently runs **standalone** with simulated data and Gemini API integration.
+
+The backend in `/backend` is **dormant** (not deployed). It contains endpoints for:
 
 * `/tasks`
 * `/briefing/daily`
@@ -117,7 +136,7 @@ Endpoints inside `/services` define how the dashboard communicates with your bac
 * `/calendar/timeblocks`
 * `/agent/status`
 
-Update these to match your backend URL or n8n instance.
+These are available for local development only. See [backend/README.md](./backend/README.md) for setup.
 
 ---
 
@@ -133,6 +152,8 @@ Deploy `/dist` to:
 * Cloudflare Pages
 * Netlify
 * AI Studio hosting
+
+**Note:** Frontend-only deployment. Backend is dormant and not deployed.
 
 ---
 

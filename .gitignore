@@ -12,6 +12,20 @@ dist
 dist-ssr
 *.local
 
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Deployment configs (backend is dormant)
+railway.json
+railway.toml
+.railway/
+vercel.json
+.vercel/
+netlify.toml
+.netlify/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
